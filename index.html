@@ -256,11 +256,20 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   font-size: clamp(3rem, 6vw, 5rem);
   line-height: 1;
 }
+.hlamt-char.c-e { color: var(--neon-green); }
 .hlamt-char.c-h { color: var(--neon-pink); }
 .hlamt-char.c-l { color: var(--neon-orange); }
-.hlamt-char.c-a { color: var(--neon-green); }
+.hlamt-char.c-a { color: var(--neon-yellow); }
 .hlamt-char.c-m { color: var(--neon-blue); }
 .hlamt-char.c-t { color: var(--neon-purple); }
+.hlamt-char.c-s { color: var(--neon-pink); }
+.hlamt-slash {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--text-dim);
+  opacity: 0.4;
+}
 .hlamt-word {
   font-family: var(--mono);
   font-size: 11px;
@@ -598,18 +607,25 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 <!-- 07 — H-LAM/T -->
 <section id="s7">
   <div class="section-label reveal"><span class="section-num">07</span> — The Framework</div>
-  <h2 class="reveal reveal-delay-1">H-LAM/T</h2>
-  <p class="dim reveal reveal-delay-1" style="font-family:var(--mono);font-size:13px;margin-bottom:16px">Engelbart's Augmentation Framework</p>
+  <h2 class="reveal reveal-delay-1">e/H-LAM/T/S</h2>
+  <p class="dim reveal reveal-delay-1" style="font-family:var(--mono);font-size:13px;margin-bottom:16px">Engelbart's 1962 Augmentation Framework — extended by commons.id</p>
   <div class="hlamt reveal reveal-delay-2">
+    <div class="hlamt-letter"><span class="hlamt-char c-e">e</span><span class="hlamt-word">Ecology</span></div>
+    <span class="hlamt-slash">/</span>
     <div class="hlamt-letter"><span class="hlamt-char c-h">H</span><span class="hlamt-word">Human</span></div>
+    <span class="hlamt-slash">-</span>
     <div class="hlamt-letter"><span class="hlamt-char c-l">L</span><span class="hlamt-word">Language</span></div>
     <div class="hlamt-letter"><span class="hlamt-char c-a">A</span><span class="hlamt-word">Artifacts</span></div>
     <div class="hlamt-letter"><span class="hlamt-char c-m">M</span><span class="hlamt-word">Methodology</span></div>
+    <span class="hlamt-slash">/</span>
     <div class="hlamt-letter"><span class="hlamt-char c-t">T</span><span class="hlamt-word">Training</span></div>
+    <span class="hlamt-slash">/</span>
+    <div class="hlamt-letter"><span class="hlamt-char c-s">S</span><span class="hlamt-word">Sessions</span></div>
   </div>
   <div class="divider reveal reveal-delay-3"></div>
-  <p class="reveal reveal-delay-3">AI tools are <em>artifacts</em> — powerful ones — but artifacts alone don't create capability.</p>
-  <p class="reveal reveal-delay-4">We develop everything that <span class="accent">surrounds</span> the artifact: the human capacity, the shared language, the methodology, the training that makes the whole system work.</p>
+  <p class="reveal reveal-delay-3">In 1962, Doug Engelbart described <em>H-LAM/T</em> — Human using Language, Artifacts, and Methodology, in which they are Trained. AI tools are powerful <em>artifacts</em>, but artifacts alone don't create capability.</p>
+  <p class="reveal reveal-delay-4">The <a href="https://commons.id" style="color:var(--neon-blue);text-decoration:none;border-bottom:1px solid var(--neon-blue)">commons.id</a> extension adds what Engelbart implied but never formalized: <span class="accent" style="color:var(--neon-green)">e/</span> because all coordination happens in a place — a season, a watershed, an ecology — and <span class="accent" style="color:var(--neon-pink)">/S</span> because knowledge emerges from <em>convergence</em>: people gathering in sessions to think together.</p>
+  <p class="reveal reveal-delay-4">We develop the <span class="accent">entire system</span> — not just the artifact, but the ecology it sits in, the humans who wield it, the shared language, the methodology, the training, and the sessions where it all converges.</p>
 </section>
 
 <!-- 08 — Ethereum Localism -->
