@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Techne — Core Principles (18×24)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   @page { size: 18in 24in; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,12 +20,12 @@
 
   .watermark {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
     font-family: 'DM Serif Display', serif;
-    font-size: 10in;
-    color: rgba(26, 26, 26, 0.025);
+    font-size: 9in;
+    color: rgba(26, 26, 26, 0.02);
     letter-spacing: 0.4in;
     white-space: nowrap;
     z-index: 0;
@@ -35,38 +35,39 @@
   .header {
     position: relative;
     z-index: 1;
-    padding: 0.8in 0.9in 0.4in 0.9in;
+    padding: 0.7in 0.8in 0.35in 0.8in;
   }
 
   .header h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: 60pt;
-    letter-spacing: 0.05in;
+    font-size: 72pt;
+    letter-spacing: 0.04in;
     color: #1a1a1a;
   }
 
   .header .subtitle {
     font-family: 'DM Sans', sans-serif;
-    font-size: 16pt;
+    font-size: 20pt;
     color: #666;
-    font-weight: 400;
-    letter-spacing: 0.08in;
+    font-weight: 500;
+    letter-spacing: 0.06in;
     text-transform: uppercase;
-    margin-top: 0.1in;
+    margin-top: 0.08in;
   }
 
-  .divider-line {
+  .rainbow-bar {
     position: relative;
     z-index: 1;
-    margin: 0 0.9in;
-    height: 3px;
-    background: #1a1a1a;
+    margin: 0 0.8in;
+    height: 5px;
+    background: linear-gradient(90deg, #e8457a, #e06830, #d4a017, #2db84d, #2b8fce, #8b5cf6);
+    border-radius: 2px;
   }
 
   .principles {
     position: relative;
     z-index: 1;
-    padding: 0.4in 0.9in 0;
+    padding: 0.35in 0.8in 0;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -75,35 +76,28 @@
   .principle {
     display: flex;
     align-items: flex-start;
-    gap: 0.35in;
-    padding: 0.38in 0;
-    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+    gap: 0.3in;
+    padding: 0.32in 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.07);
   }
 
   .principle:last-child {
     border-bottom: none;
   }
 
-  .principle-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 0.8in;
-    gap: 0.12in;
-  }
-
   .principle-number {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13pt;
-    font-weight: 500;
-    color: #999;
-    letter-spacing: 0.02in;
+    font-size: 18pt;
+    font-weight: 700;
+    min-width: 0.55in;
+    padding-top: 0.04in;
   }
 
   .principle-accent {
-    width: 4px;
-    height: 0.5in;
+    width: 5px;
+    align-self: stretch;
     border-radius: 2px;
+    min-height: 0.6in;
   }
 
   .principle-right {
@@ -112,18 +106,79 @@
 
   .principle-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 26pt;
+    font-size: 32pt;
     line-height: 1.15;
-    margin-bottom: 0.12in;
+    margin-bottom: 0.08in;
     color: #1a1a1a;
   }
 
   .principle-desc {
     font-family: 'DM Sans', sans-serif;
-    font-size: 14pt;
-    line-height: 1.5;
+    font-size: 18pt;
+    line-height: 1.45;
     color: #444;
     font-weight: 400;
+  }
+
+  .cta-section {
+    position: relative;
+    z-index: 1;
+    margin: 0.35in 0.8in 0;
+    padding: 0.4in 0.5in;
+    background: rgba(26, 26, 26, 0.03);
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4in;
+  }
+
+  .cta-left {
+    flex: 1;
+  }
+
+  .cta-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28pt;
+    line-height: 1.2;
+    margin-bottom: 0.12in;
+  }
+
+  .cta-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16pt;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  .cta-match {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18pt;
+    font-weight: 700;
+    margin-top: 0.15in;
+    background: linear-gradient(90deg, #e8457a, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.12in;
+  }
+
+  .cta-right .qr-code svg {
+    width: 2.5in;
+    height: 2.5in;
+  }
+
+  .cta-right .scan-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12pt;
+    color: #888;
+    letter-spacing: 0.03in;
   }
 
   .bottom-strip {
@@ -131,62 +186,45 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 1.2in;
+    height: 1in;
     background: #1a1a1a;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0.9in;
+    padding: 0 0.8in;
     color: #f0eeeb;
   }
 
   .bottom-left {
     display: flex;
     align-items: center;
-    gap: 0.25in;
+    gap: 0.2in;
   }
 
   .bottom-left .aura-img {
-    width: 1.6in;
+    width: 1.4in;
     height: auto;
     border-radius: 4px;
   }
 
-  .bottom-center {
-    text-align: center;
+  .bottom-info {
     flex: 1;
-    padding: 0 0.3in;
+    text-align: center;
   }
 
-  .bottom-center .org-line {
+  .bottom-info .org-line {
     font-family: 'DM Sans', sans-serif;
-    font-size: 11pt;
+    font-size: 12pt;
     letter-spacing: 0.04in;
     color: #ccc;
   }
 
-  .bottom-center .fund-line {
-    font-family: 'DM Sans', sans-serif;
+  .bottom-info .location {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10pt;
     color: #888;
-    margin-top: 0.06in;
-    letter-spacing: 0.03in;
-  }
-
-  .bottom-right {
-    display: flex;
-    align-items: center;
-  }
-
-  .bottom-right .qr-code {
-    width: 1.3in;
-    height: 1.3in;
-  }
-
-  .bottom-right .qr-code svg {
-    width: 100%;
-    height: 100%;
+    margin-top: 0.04in;
   }
 </style>
 </head>
@@ -199,15 +237,13 @@
   <div class="subtitle">Core Principles</div>
 </div>
 
-<div class="divider-line"></div>
+<div class="rainbow-bar"></div>
 
 <div class="principles">
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">01</div>
-      <div class="principle-accent" style="background: #e8457a;"></div>
-    </div>
+    <div class="principle-number" style="color: #e8457a;">01</div>
+    <div class="principle-accent" style="background: #e8457a;"></div>
     <div class="principle-right">
       <div class="principle-title">Augmentation over Automation</div>
       <div class="principle-desc">Technology extends human capability, not replaces it</div>
@@ -215,10 +251,8 @@
   </div>
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">02</div>
-      <div class="principle-accent" style="background: #e06830;"></div>
-    </div>
+    <div class="principle-number" style="color: #e06830;">02</div>
+    <div class="principle-accent" style="background: #e06830;"></div>
     <div class="principle-right">
       <div class="principle-title">Collective Intelligence</div>
       <div class="principle-desc">Intelligence emerges from relationship, not computation alone</div>
@@ -226,10 +260,8 @@
   </div>
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">03</div>
-      <div class="principle-accent" style="background: #d4a017;"></div>
-    </div>
+    <div class="principle-number" style="color: #d4a017;">03</div>
+    <div class="principle-accent" style="background: #d4a017;"></div>
     <div class="principle-right">
       <div class="principle-title">The Craft of Composition</div>
       <div class="principle-desc">Mastery is recognizing which patterns a problem requires and composing them with fluency</div>
@@ -237,10 +269,8 @@
   </div>
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">04</div>
-      <div class="principle-accent" style="background: #2db84d;"></div>
-    </div>
+    <div class="principle-number" style="color: #2db84d;">04</div>
+    <div class="principle-accent" style="background: #2db84d;"></div>
     <div class="principle-right">
       <div class="principle-title">Bootstrapping</div>
       <div class="principle-desc">Using your tools to improve your tools — the compounding engine</div>
@@ -248,10 +278,8 @@
   </div>
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">05</div>
-      <div class="principle-accent" style="background: #2b8fce;"></div>
-    </div>
+    <div class="principle-number" style="color: #2b8fce;">05</div>
+    <div class="principle-accent" style="background: #2b8fce;"></div>
     <div class="principle-right">
       <div class="principle-title">Commons Ownership</div>
       <div class="principle-desc">Infrastructure owned by the people who use it</div>
@@ -259,10 +287,8 @@
   </div>
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">06</div>
-      <div class="principle-accent" style="background: #8b5cf6;"></div>
-    </div>
+    <div class="principle-number" style="color: #8b5cf6;">06</div>
+    <div class="principle-accent" style="background: #8b5cf6;"></div>
     <div class="principle-right">
       <div class="principle-title">Grounded in Place</div>
       <div class="principle-desc">All coordination happens somewhere — in a watershed, a season, a building</div>
@@ -270,10 +296,8 @@
   </div>
 
   <div class="principle">
-    <div class="principle-left">
-      <div class="principle-number">07</div>
-      <div class="principle-accent" style="background: #c44569;"></div>
-    </div>
+    <div class="principle-number" style="color: #c44569;">07</div>
+    <div class="principle-accent" style="background: #c44569;"></div>
     <div class="principle-right">
       <div class="principle-title">Articulation as Capability</div>
       <div class="principle-desc">The ability to express what you want clearly is the foundational skill</div>
@@ -282,18 +306,27 @@
 
 </div>
 
+<div class="cta-section">
+  <div class="cta-left">
+    <div class="cta-heading">Support Techne at RegenHub</div>
+    <div class="cta-text">We're building an integral technology learning center and Ethereum community hub in Boulder, Colorado. Consider supporting our mission on Artizen.</div>
+    <div class="cta-match">Every dollar matched 1:1</div>
+  </div>
+  <div class="cta-right">
+    <div class="qr-code">
+      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#f0eeeb" d="M0 0h35v35H0z"/><path stroke="#1a1a1a" d="M1 1.5h7m5 0h3m1 0h5m2 0h1m2 0h7M1 2.5h1m5 0h1m2 0h1m1 0h1m1 0h5m2 0h2m2 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h2m2 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h7m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m1 0h2m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h5m2 0h1m3 0h1m1 0h3M1 9.5h1m1 0h5m5 0h4m1 0h1m4 0h2m2 0h5M2 10.5h3m3 0h1m9 0h3m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1M2 11.5h1m2 0h9m2 0h1m1 0h1m3 0h2m2 0h2m1 0h1m1 0h2M1 12.5h1m1 0h2m1 0h1m1 0h2m1 0h1m3 0h2m2 0h1m1 0h3m1 0h2m2 0h3M1 13.5h8m1 0h2m1 0h1m2 0h1m1 0h2m1 0h1m1 0h4m1 0h3m2 0h1M4 14.5h2m2 0h2m3 0h6m1 0h2m2 0h1m1 0h3m1 0h1m1 0h2M1 15.5h4m1 0h5m7 0h1m2 0h1m1 0h1m2 0h3m3 0h1M2 16.5h1m1 0h1m1 0h1m1 0h3m1 0h2m3 0h1m1 0h1m2 0h1m3 0h2m2 0h2M1 17.5h1m3 0h3m1 0h1m4 0h2m1 0h2m6 0h2m1 0h2m3 0h1M3 18.5h4m1 0h1m1 0h3m2 0h1m1 0h6m1 0h1m2 0h2m1 0h2m1 0h1M1 19.5h1m2 0h5m1 0h2m2 0h1m1 0h2m7 0h1m2 0h2m1 0h2M3 20.5h1m2 0h1m2 0h1m2 0h1m1 0h2m1 0h1m2 0h3m4 0h7M2 21.5h3m2 0h1m1 0h1m1 0h1m1 0h1m3 0h4m4 0h2m2 0h2M1 22.5h1m2 0h1m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m3 0h2m1 0h2m2 0h1m2 0h2m1 0h1M1 23.5h1m1 0h1m3 0h1m3 0h1m2 0h4m3 0h1m1 0h1m6 0h3M1 24.5h1m1 0h1m1 0h1m2 0h9m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1M1 25.5h1m1 0h1m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m4 0h1m1 0h5m3 0h1M9 26.5h1m1 0h2m6 0h3m2 0h2m3 0h1m1 0h1m1 0h1M1 27.5h7m6 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2M1 28.5h1m5 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h5m3 0h4M1 29.5h1m1 0h3m1 0h1m1 0h1m2 0h4m3 0h1m3 0h1m1 0h6m1 0h1M1 30.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h5m2 0h1m2 0h2m1 0h2M1 31.5h1m1 0h3m1 0h1m1 0h1m2 0h2m7 0h1m1 0h1m1 0h4m1 0h2M1 32.5h1m5 0h1m4 0h2m3 0h1m2 0h1m1 0h1m3 0h1m2 0h3M1 33.5h7m1 0h2m1 0h1m1 0h2m1 0h2m2 0h1m1 0h4m1 0h1m3 0h1"/></svg>
+    </div>
+    <div class="scan-label">Scan to support</div>
+  </div>
+</div>
+
 <div class="bottom-strip">
   <div class="bottom-left">
     <img class="aura-img" src="Techne Aura.jpg" alt="Techne Aura">
   </div>
-  <div class="bottom-center">
-    <div class="org-line">Techne at RegenHub · An Integral Technology Learning Center · 1515 Walnut Street, Boulder, Colorado · techne.institute</div>
-    <div class="fund-line">Fund us on Artizen · 1:1 Match</div>
-  </div>
-  <div class="bottom-right">
-    <div class="qr-code">
-      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#f0eeeb" d="M0 0h35v35H0z"/><path stroke="#1a1a1a" d="M1 1.5h7m5 0h3m1 0h5m2 0h1m2 0h7M1 2.5h1m5 0h1m2 0h1m1 0h1m1 0h5m2 0h2m2 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h2m2 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h7m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m1 0h2m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h5m2 0h1m3 0h1m1 0h3M1 9.5h1m1 0h5m5 0h4m1 0h1m4 0h2m2 0h5M2 10.5h3m3 0h1m9 0h3m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1M2 11.5h1m2 0h9m2 0h1m1 0h1m3 0h2m2 0h2m1 0h1m1 0h2M1 12.5h1m1 0h2m1 0h1m1 0h2m1 0h1m3 0h2m2 0h1m1 0h3m1 0h2m2 0h3M1 13.5h8m1 0h2m1 0h1m2 0h1m1 0h2m1 0h1m1 0h4m1 0h3m2 0h1M4 14.5h2m2 0h2m3 0h6m1 0h2m2 0h1m1 0h3m1 0h1m1 0h2M1 15.5h4m1 0h5m7 0h1m2 0h1m1 0h1m2 0h3m3 0h1M2 16.5h1m1 0h1m1 0h1m1 0h3m1 0h2m3 0h1m1 0h1m2 0h1m3 0h2m2 0h2M1 17.5h1m3 0h3m1 0h1m4 0h2m1 0h2m6 0h2m1 0h2m3 0h1M3 18.5h4m1 0h1m1 0h3m2 0h1m1 0h6m1 0h1m2 0h2m1 0h2m1 0h1M1 19.5h1m2 0h5m1 0h2m2 0h1m1 0h2m7 0h1m2 0h2m1 0h2M3 20.5h1m2 0h1m2 0h1m2 0h1m1 0h2m1 0h1m2 0h3m4 0h7M2 21.5h3m2 0h1m1 0h1m1 0h1m1 0h1m3 0h4m4 0h2m2 0h2M1 22.5h1m2 0h1m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m3 0h2m1 0h2m2 0h1m2 0h2m1 0h1M1 23.5h1m1 0h1m3 0h1m3 0h1m2 0h4m3 0h1m1 0h1m6 0h3M1 24.5h1m1 0h1m1 0h1m2 0h9m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1M1 25.5h1m1 0h1m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m4 0h1m1 0h5m3 0h1M9 26.5h1m1 0h2m6 0h3m2 0h2m3 0h1m1 0h1m1 0h1M1 27.5h7m6 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2M1 28.5h1m5 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h5m3 0h4M1 29.5h1m1 0h3m1 0h1m1 0h1m2 0h4m3 0h1m3 0h1m1 0h6m1 0h1M1 30.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h5m2 0h1m2 0h2m1 0h2M1 31.5h1m1 0h3m1 0h1m1 0h1m2 0h2m7 0h1m1 0h1m1 0h4m1 0h2M1 32.5h1m5 0h1m4 0h2m3 0h1m2 0h1m1 0h1m3 0h1m2 0h3M1 33.5h7m1 0h2m1 0h1m1 0h2m1 0h2m2 0h1m1 0h4m1 0h1m3 0h1"/></svg>
-    </div>
+  <div class="bottom-info">
+    <div class="org-line">Techne at RegenHub · An Integral Technology Learning Center</div>
+    <div class="location">1515 Walnut Street, Boulder, Colorado · techne.institute</div>
   </div>
 </div>
 
