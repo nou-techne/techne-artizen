@@ -14,8 +14,7 @@ const path = require('path');
   
   // Trigger all reveal animations + inject print styles
   await page.evaluate(() => {
-    // Enable dark mode
-    document.documentElement.classList.add('dark');
+    if (typeof DARK_MODE !== 'undefined') document.documentElement.classList.add('dark');
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     
     // Force each section to be exactly one slide
@@ -44,26 +43,27 @@ const path = require('path');
       section:last-of-type { page-break-after: auto !important; }
       .nav-dots, .theme-toggle, .scroll-cue, #themeToggle { display: none !important; }
 
-      /* Accessibility: larger fonts, higher contrast, less content per slide */
-      body { font-size: 22px !important; }
-      h1 { font-size: 4rem !important; }
-      h2 { font-size: 3rem !important; }
-      h3 { font-size: 1.6rem !important; }
+      /* Accessibility: large fonts, bold, high contrast */
+      body { font-size: 28px !important; font-weight: 500 !important; }
+      h1 { font-size: 7rem !important; font-weight: 700 !important; }
+      h2 { font-size: 5rem !important; font-weight: 700 !important; }
+      h3 { font-size: 2.5rem !important; font-weight: 600 !important; }
       p, li, .step-content p, .floor-desc, .tent-content p { 
-        font-size: 1.15rem !important; 
-        line-height: 1.7 !important;
+        font-size: 1.8rem !important; 
+        line-height: 1.6 !important;
+        font-weight: 500 !important;
         max-width: 800px;
       }
-      p.large { font-size: 1.35rem !important; }
-      .pull-quote, .pull-quote p { font-size: 1.3rem !important; max-width: 800px; }
-      .section-label, .floor-label, .dim { font-size: 14px !important; }
-      .section-num { font-size: 14px !important; }
-      .floor-feat, .tent-tag { font-size: 13px !important; padding: 5px 12px !important; }
+      p.large { font-size: 2.2rem !important; font-weight: 500 !important; }
+      .pull-quote, .pull-quote p { font-size: 2rem !important; font-weight: 500 !important; max-width: 800px; }
+      .section-label, .floor-label, .dim { font-size: 18px !important; font-weight: 600 !important; }
+      .section-num { font-size: 18px !important; font-weight: 700 !important; }
+      .floor-feat, .tent-tag { font-size: 16px !important; padding: 6px 14px !important; font-weight: 500 !important; }
 
-      /* Higher contrast for dark mode */
-      p, li, .step-content p, .floor-desc { color: #cccccc !important; }
-      h1, h2, h3, .floor-name { color: #ffffff !important; }
-      .section-label, .dim { color: #999999 !important; }
+      /* Higher contrast - adapts to mode */
+      p, li, .step-content p, .floor-desc { color: ${document.documentElement.classList.contains('dark') ? '#cccccc' : '#333333'} !important; }
+      h1, h2, h3, .floor-name { color: ${document.documentElement.classList.contains('dark') ? '#ffffff' : '#111111'} !important; }
+      .section-label, .dim { color: ${document.documentElement.classList.contains('dark') ? '#999999' : '#666666'} !important; }
 
       /* Tighter layout — more padding, less clutter */
       section { padding: 100px 160px !important; }
@@ -78,7 +78,7 @@ const path = require('path');
   await new Promise(r => setTimeout(r, 1000));
 
   await page.pdf({
-    path: path.resolve(__dirname, 'Techne-at-RegenHub-Pitch-Deck.pdf'),
+    path: path.resolve(__dirname, 'Techne-at-RegenHub-Pitch-Deck-Light.pdf'),
     width: '1920px',
     height: '1080px',
     printBackground: true,
