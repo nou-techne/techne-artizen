@@ -483,9 +483,69 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   .hlamt { gap: 8px; }
   .hlamt-letter { min-width: 60px; }
 }
+
+/* Dark mode */
+html.dark {
+  --bg: #121212;
+  --bg-card: #1e1e1e;
+  --text: #e8e8e8;
+  --text-secondary: #aaaaaa;
+  --text-dim: #777777;
+}
+html.dark .artifact-image img { filter: invert(1) hue-rotate(180deg); }
+html.dark .rainbow-bar { opacity: 0.8; }
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--text-dim);
+  border-radius: 100px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+.theme-toggle:hover { border-color: var(--text-secondary); color: var(--text-secondary); }
+
+.toggle-track {
+  width: 36px;
+  height: 20px;
+  background: var(--text-dim);
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.3s;
+}
+html.dark .toggle-track { background: var(--neon-purple); }
+
+.toggle-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--bg);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+html.dark .toggle-thumb { transform: translateX(16px); }
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+  <span class="toggle-label">light</span>
+  <div class="toggle-track"><div class="toggle-thumb"></div></div>
+</button>
 
 <nav class="nav-dots" id="navDots"></nav>
 
@@ -742,6 +802,14 @@ const dotObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 sections.forEach(s => dotObserver.observe(s));
+
+// Theme toggle
+const toggle = document.getElementById('themeToggle');
+const label = toggle.querySelector('.toggle-label');
+toggle.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  label.textContent = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+});
 
 // Init Lucide icons
 lucide.createIcons();
