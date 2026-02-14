@@ -410,22 +410,18 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .link-card span { font-size: 0.85rem; color: var(--text-dim); display: block; }
 
 /* Artifact placeholder */
-.artifact-placeholder {
-  width: 280px;
-  height: 280px;
-  border: 2px dashed;
-  border-image: linear-gradient(135deg, #e8457a, #2b8fce, #2db84d) 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.artifact-image {
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
   margin: 40px 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
 }
-.artifact-placeholder span {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-dim);
-  text-align: center;
-  padding: 20px;
+.artifact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Ethereum section icons */
@@ -502,8 +498,8 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
     <i data-lucide="map-pin" style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:4px"></i>
     Boulder, Colorado · 5,430 ft
   </div>
-  <div class="artifact-placeholder reveal reveal-delay-4">
-    <span>Artifact image<br>placeholder</span>
+  <div class="artifact-image reveal reveal-delay-4">
+    <img src="Techne Aura.jpg" alt="Techne Aura — Artifact">
   </div>
 </section>
 
