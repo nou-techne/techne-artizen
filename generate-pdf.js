@@ -43,7 +43,34 @@ const path = require('path');
       }
       section:last-of-type { page-break-after: auto !important; }
       .nav-dots, .theme-toggle, .scroll-cue, #themeToggle { display: none !important; }
-      .pull-quote, p { max-width: 900px; }
+
+      /* Accessibility: larger fonts, higher contrast, less content per slide */
+      body { font-size: 22px !important; }
+      h1 { font-size: 4rem !important; }
+      h2 { font-size: 3rem !important; }
+      h3 { font-size: 1.6rem !important; }
+      p, li, .step-content p, .floor-desc, .tent-content p { 
+        font-size: 1.15rem !important; 
+        line-height: 1.7 !important;
+        max-width: 800px;
+      }
+      p.large { font-size: 1.35rem !important; }
+      .pull-quote, .pull-quote p { font-size: 1.3rem !important; max-width: 800px; }
+      .section-label, .floor-label, .dim { font-size: 14px !important; }
+      .section-num { font-size: 14px !important; }
+      .floor-feat, .tent-tag { font-size: 13px !important; padding: 5px 12px !important; }
+
+      /* Higher contrast for dark mode */
+      p, li, .step-content p, .floor-desc { color: #cccccc !important; }
+      h1, h2, h3, .floor-name { color: #ffffff !important; }
+      .section-label, .dim { color: #999999 !important; }
+
+      /* Tighter layout — more padding, less clutter */
+      section { padding: 100px 160px !important; }
+      .title-section { padding: 100px 160px !important; gap: 100px !important; }
+      .building { gap: 0 !important; }
+      .hlamt { gap: 20px !important; }
+      .artifact-image { width: 380px !important; height: 380px !important; }
     `;
     document.head.appendChild(style);
   });
