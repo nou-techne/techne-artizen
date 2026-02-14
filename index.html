@@ -178,49 +178,37 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 /* Building diagram */
 .building {
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 640px;
+  flex-direction: row;
+  gap: 24px;
+  max-width: 100%;
   margin: 40px 0;
   position: relative;
 }
-.building::before {
-  content: '';
-  position: absolute;
-  left: 30px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--neon-purple), var(--neon-pink), var(--neon-green));
-  border-radius: 1px;
-}
 .floor {
+  flex: 1;
   border: 1px solid var(--bg-card);
-  padding: 32px 32px 32px 72px;
+  padding: 28px;
   position: relative;
   background: var(--bg);
   transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
   border-radius: 12px;
-  margin-bottom: 12px;
+  border-top: 3px solid var(--text-dim);
 }
 .floor:hover {
   background: var(--bg-card);
 }
 .floor-icon {
-  position: absolute;
-  left: 14px;
-  top: 32px;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg);
   border: 2px solid var(--text-dim);
-  z-index: 1;
+  margin-bottom: 16px;
 }
-.floor-icon i { width: 16px; height: 16px; }
+.floor-icon i { width: 18px; height: 18px; }
 .floor-label {
   font-family: var(--mono);
   font-size: 11px;
@@ -256,23 +244,21 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   transition: border-color 0.2s, color 0.2s;
 }
 .floor.highlight {
-  border-color: var(--neon-pink);
+  border-top-color: var(--neon-pink);
   background: rgba(232,69,122,0.04);
-  border-width: 2px;
 }
 .floor.highlight .floor-name { color: var(--neon-pink); }
 .floor.highlight .floor-icon { border-color: var(--neon-pink); color: var(--neon-pink); }
 .floor.highlight .floor-feat:hover { border-color: var(--neon-pink); color: var(--neon-pink); }
-.floor.roof { border-color: var(--neon-purple); }
+.floor.roof { border-top-color: var(--neon-purple); }
 .floor.roof .floor-icon { border-color: var(--neon-purple); color: var(--neon-purple); }
 .floor.roof .floor-feat:hover { border-color: var(--neon-purple); color: var(--neon-purple); }
-.floor.second { border-color: var(--neon-green); }
+.floor.second { border-top-color: var(--neon-green); }
 .floor.second .floor-icon { border-color: var(--neon-green); color: var(--neon-green); }
 .floor.second .floor-feat:hover { border-color: var(--neon-green); color: var(--neon-green); }
 @media (max-width: 768px) {
-  .floor { padding: 24px 24px 24px 64px; }
-  .building::before { left: 24px; }
-  .floor-icon { left: 8px; }
+  .building { flex-direction: column; }
+  .floor { padding: 24px; }
 }
 
 /* Comparison grid */
