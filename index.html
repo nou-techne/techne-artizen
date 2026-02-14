@@ -178,22 +178,23 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 /* Building diagram */
 .building {
   display: flex;
-  flex-direction: row;
-  gap: 24px;
-  max-width: 100%;
+  flex-direction: column;
+  gap: 0;
+  max-width: 680px;
   margin: 40px 0;
   position: relative;
 }
 .floor {
-  flex: 1;
   border: 1px solid var(--bg-card);
   padding: 28px;
   position: relative;
   background: var(--bg);
   transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
-  border-radius: 12px;
   border-top: 3px solid var(--text-dim);
 }
+.floor:first-child { border-radius: 12px 12px 0 0; }
+.floor:last-child { border-radius: 0 0 12px 12px; border-top: 1px solid var(--bg-card); }
+.floor:not(:first-child):not(:last-child) { border-radius: 0; border-top: 1px solid var(--bg-card); }
 .floor:hover {
   background: var(--bg-card);
 }
@@ -257,7 +258,6 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .floor.second .floor-icon { border-color: var(--neon-green); color: var(--neon-green); }
 .floor.second .floor-feat:hover { border-color: var(--neon-green); color: var(--neon-green); }
 @media (max-width: 768px) {
-  .building { flex-direction: column; }
   .floor { padding: 24px; }
 }
 
