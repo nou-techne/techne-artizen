@@ -13,13 +13,17 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0a0f1a;
-  --bg-elevated: #111827;
-  --bg-card: #1a2236;
-  --text: #e8e2d8;
-  --text-dim: #8b8578;
-  --accent: #c4956a;
-  --accent2: #7c9885;
+  --bg: #fafafa;
+  --bg-card: #f0f0f0;
+  --text: #1a1a1a;
+  --text-secondary: #555555;
+  --text-dim: #888888;
+  --neon-pink: #ff2d87;
+  --neon-blue: #00d4ff;
+  --neon-green: #39ff14;
+  --neon-orange: #ff6b2b;
+  --neon-purple: #bf5af2;
+  --neon-yellow: #ffe600;
   --mono: 'JetBrains Mono', monospace;
   --sans: 'DM Sans', sans-serif;
   --serif: 'DM Serif Display', serif;
@@ -34,6 +38,21 @@ body {
   font-size: 18px;
   line-height: 1.6;
   overflow-x: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+}
+
+/* Rainbow gradient utility */
+.rainbow-text {
+  background: linear-gradient(135deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rainbow-bar {
+  height: 2px;
+  background: linear-gradient(90deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
+  border: none;
 }
 
 section {
@@ -56,12 +75,17 @@ section {
   margin-bottom: 32px;
 }
 
+.section-label::first-line {
+  /* handled inline for gradient numbers */
+}
+
 h1 {
   font-family: var(--serif);
   font-size: clamp(2.5rem, 6vw, 5rem);
   line-height: 1.1;
   font-weight: 400;
   margin-bottom: 24px;
+  color: var(--text);
 }
 
 h2 {
@@ -70,6 +94,7 @@ h2 {
   line-height: 1.15;
   font-weight: 400;
   margin-bottom: 24px;
+  color: var(--text);
 }
 
 h3 {
@@ -79,11 +104,11 @@ h3 {
   margin-bottom: 16px;
 }
 
-p { max-width: 680px; margin-bottom: 16px; }
+p { max-width: 680px; margin-bottom: 16px; color: var(--text-secondary); }
 p.large { font-size: 1.25rem; line-height: 1.5; }
 
-.accent { color: var(--accent); }
-.accent2 { color: var(--accent2); }
+.accent { color: var(--neon-pink); }
+.accent2 { color: var(--neon-blue); }
 .dim { color: var(--text-dim); }
 
 /* Reveal animation */
@@ -118,12 +143,22 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   margin-top: 8px;
 }
 
-/* Divider */
+/* Divider — rainbow gradient bar */
 .divider {
-  width: 60px;
-  height: 1px;
-  background: var(--accent);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
   margin: 32px 0;
+  border-radius: 2px;
+}
+
+/* Section number styling */
+.section-num {
+  background: linear-gradient(135deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
 }
 
 /* Building diagram */
@@ -135,9 +170,15 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   margin: 40px 0;
 }
 .floor {
-  border: 1px solid rgba(232,226,216,0.15);
+  border: 1px solid #e0e0e0;
   padding: 28px 32px;
   position: relative;
+  background: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.floor:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0,212,255,0.15);
 }
 .floor-label {
   font-family: var(--mono);
@@ -150,6 +191,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .floor-name {
   font-family: var(--serif);
   font-size: 1.5rem;
+  color: var(--text);
 }
 .floor-desc {
   font-size: 0.9rem;
@@ -157,9 +199,17 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   margin-top: 4px;
 }
 .floor.highlight {
-  border-color: var(--accent);
-  background: rgba(196,149,106,0.05);
+  border-color: var(--neon-pink);
+  background: rgba(255,45,135,0.04);
+  border-width: 2px;
 }
+.floor.highlight .floor-name {
+  color: var(--neon-pink);
+}
+.floor.roof { border-color: var(--neon-purple); }
+.floor.roof:hover { box-shadow: 0 0 12px rgba(191,90,242,0.15); }
+.floor.second { border-color: var(--neon-green); }
+.floor.second:hover { box-shadow: 0 0 12px rgba(57,255,20,0.15); }
 
 /* Comparison grid */
 .comparison {
@@ -172,11 +222,15 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .comparison-col h3 {
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(232,226,216,0.1);
+  border-bottom: 2px solid #e0e0e0;
+}
+.comparison-col:last-child h3 {
+  border-image: linear-gradient(90deg, #ff2d87, #bf5af2) 1;
 }
 .comparison-item {
   margin-bottom: 20px;
   font-size: 1.05rem;
+  color: var(--text);
 }
 .comparison-item .dim { font-size: 0.85rem; display: block; margin-top: 2px; }
 
@@ -184,7 +238,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   .comparison { grid-template-columns: 1fr; gap: 32px; }
 }
 
-/* HLAMT letters */
+/* HLAMT letters — each a different neon color */
 .hlamt {
   display: flex;
   gap: 16px;
@@ -201,8 +255,12 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   font-family: var(--serif);
   font-size: clamp(3rem, 6vw, 5rem);
   line-height: 1;
-  color: var(--accent);
 }
+.hlamt-char.c-h { color: var(--neon-pink); }
+.hlamt-char.c-l { color: var(--neon-orange); }
+.hlamt-char.c-a { color: var(--neon-green); }
+.hlamt-char.c-m { color: var(--neon-blue); }
+.hlamt-char.c-t { color: var(--neon-purple); }
 .hlamt-word {
   font-family: var(--mono);
   font-size: 11px;
@@ -223,13 +281,20 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .program-card {
   background: var(--bg-card);
   padding: 28px;
-  border: 1px solid rgba(232,226,216,0.08);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.program-card:hover {
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 16px rgba(191,90,242,0.12);
 }
 .program-card h4 {
   font-family: var(--serif);
   font-size: 1.15rem;
   font-weight: 400;
   margin-bottom: 8px;
+  color: var(--text);
 }
 .program-card p {
   font-size: 0.9rem;
@@ -239,9 +304,12 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .program-tier {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--accent);
   letter-spacing: 0.1em;
   margin-bottom: 8px;
+  background: linear-gradient(135deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Traction list */
@@ -251,20 +319,24 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 }
 .traction-list li {
   padding: 16px 0;
-  border-bottom: 1px solid rgba(232,226,216,0.08);
+  border-bottom: 1px solid #e8e8e8;
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  color: var(--text);
 }
-.traction-list li i { color: var(--accent2); flex-shrink: 0; margin-top: 3px; }
+.traction-list li i { color: var(--neon-green); flex-shrink: 0; margin-top: 3px; }
 
 /* The Ask */
 .ask-amount {
   font-family: var(--serif);
   font-size: clamp(3rem, 7vw, 6rem);
-  color: var(--accent);
   line-height: 1;
   margin: 24px 0;
+  background: linear-gradient(135deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .ask-grid {
   display: grid;
@@ -275,7 +347,8 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 }
 .ask-item {
   padding: 20px 0;
-  border-top: 1px solid rgba(232,226,216,0.1);
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #ff2d87, #00d4ff) 1;
 }
 .ask-item h4 {
   font-family: var(--mono);
@@ -291,14 +364,15 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(196,149,106,0.12);
-  border: 1px solid rgba(196,149,106,0.3);
-  padding: 12px 20px;
+  background: linear-gradient(135deg, #ff2d87, #ff6b2b, #ffe600, #39ff14, #00d4ff, #bf5af2);
+  padding: 14px 24px;
   font-family: var(--mono);
   font-size: 14px;
-  color: var(--accent);
+  color: #fff;
+  border-radius: 4px;
   margin-top: 24px;
 }
+.match-badge i { color: #fff; }
 
 /* Links */
 .link-grid {
@@ -313,23 +387,26 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   align-items: center;
   gap: 16px;
   padding: 24px;
-  border: 1px solid rgba(232,226,216,0.1);
+  border: 1px solid #e0e0e0;
   text-decoration: none;
   color: var(--text);
-  transition: border-color 0.3s, background 0.3s;
+  border-radius: 4px;
+  background: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 .link-card:hover {
-  border-color: var(--accent);
-  background: rgba(196,149,106,0.04);
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 16px rgba(255,45,135,0.12);
 }
-.link-card i { color: var(--accent); flex-shrink: 0; }
+.link-card i { color: var(--neon-pink); flex-shrink: 0; }
 .link-card span { font-size: 0.85rem; color: var(--text-dim); display: block; }
 
 /* Artifact placeholder */
 .artifact-placeholder {
   width: 280px;
   height: 280px;
-  border: 1px dashed rgba(232,226,216,0.15);
+  border: 2px dashed;
+  border-image: linear-gradient(135deg, #ff2d87, #00d4ff, #39ff14) 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,7 +436,17 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   letter-spacing: 0.05em;
   color: var(--text-dim);
 }
-.eth-value i { color: var(--accent2); }
+.eth-value i { color: var(--neon-blue); }
+
+/* Pull quote style */
+.pull-quote {
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, #ff2d87, #bf5af2) 1;
+  padding-left: 20px;
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 480px;
+}
 
 /* Nav dots */
 .nav-dots {
@@ -376,13 +463,14 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(232,226,216,0.15);
+  background: #d0d0d0;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 .nav-dot.active {
-  background: var(--accent);
+  background: var(--neon-pink);
   transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(255,45,135,0.4);
 }
 
 @media (max-width: 768px) {
@@ -399,7 +487,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 01 — Title -->
 <section class="title-section" id="s1">
-  <div class="section-label reveal">01 — Techne at RegenHub</div>
+  <div class="section-label reveal"><span class="section-num">01</span> — Techne at RegenHub</div>
   <h1 class="reveal reveal-delay-1">Techne at<br>RegenHub</h1>
   <div class="title-sub reveal reveal-delay-2">An Integral Technology Learning Center<br>& Ethereum Community Hub</div>
   <div class="title-location reveal reveal-delay-3">
@@ -413,7 +501,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 02 — The Premise -->
 <section id="s2">
-  <div class="section-label reveal">02 — The Premise</div>
+  <div class="section-label reveal"><span class="section-num">02</span> — The Premise</div>
   <h2 class="reveal reveal-delay-1">The recovery<br>of craft</h2>
   <div class="divider reveal reveal-delay-2"></div>
   <p class="large reveal reveal-delay-2"><span class="accent">Techne</span> (Greek): the craft of making — the knowledge that brings something into being.</p>
@@ -422,7 +510,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 03 — The Opportunity -->
 <section id="s3">
-  <div class="section-label reveal">03 — The Opportunity</div>
+  <div class="section-label reveal"><span class="section-num">03</span> — The Opportunity</div>
   <h2 class="reveal reveal-delay-1">1515 Walnut Street</h2>
   <p class="dim reveal reveal-delay-1" style="font-family:var(--mono);font-size:13px;margin-bottom:32px">Boulder, Colorado</p>
   <p class="large reveal reveal-delay-2">RegenHub has operated the second floor for two years — co-working, events, community building.</p>
@@ -431,31 +519,31 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 04 — What We're Building -->
 <section id="s4">
-  <div class="section-label reveal">04 — What We're Building</div>
+  <div class="section-label reveal"><span class="section-num">04</span> — What We're Building</div>
   <h2 class="reveal reveal-delay-1">A vertical ecosystem</h2>
   <div class="building">
-    <div class="floor reveal reveal-delay-1">
+    <div class="floor roof reveal reveal-delay-1">
       <div class="floor-label">Roof</div>
       <div class="floor-name">Gathering Space</div>
       <div class="floor-desc">Community events, open sky</div>
     </div>
     <div class="floor highlight reveal reveal-delay-2">
       <div class="floor-label">Third Floor — New</div>
-      <div class="floor-name accent">Techne Institute</div>
+      <div class="floor-name">Techne Institute</div>
       <div class="floor-desc">Learning cohorts, studio, contemplative practice</div>
     </div>
-    <div class="floor reveal reveal-delay-3">
+    <div class="floor second reveal reveal-delay-3">
       <div class="floor-label">Second Floor — Active</div>
       <div class="floor-name">RegenHub</div>
       <div class="floor-desc">Co-working cooperative, ventures, builders</div>
     </div>
   </div>
-  <p class="dim reveal reveal-delay-4" style="font-style:italic;max-width:480px">The building is the product — a complete ecosystem from street to sky.</p>
+  <p class="pull-quote reveal reveal-delay-4">The building is the product — a complete ecosystem from street to sky.</p>
 </section>
 
 <!-- 05 — The Distinction -->
 <section id="s5">
-  <div class="section-label reveal">05 — The Distinction</div>
+  <div class="section-label reveal"><span class="section-num">05</span> — The Distinction</div>
   <h2 class="reveal reveal-delay-1">A different<br>orientation</h2>
   <div class="comparison">
     <div class="comparison-col reveal reveal-delay-2">
@@ -475,7 +563,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 06 — Programs -->
 <section id="s6">
-  <div class="section-label reveal">06 — Programs</div>
+  <div class="section-label reveal"><span class="section-num">06</span> — Programs</div>
   <h2 class="reveal reveal-delay-1">Multiple entry points</h2>
   <p class="reveal reveal-delay-2">Into capability development.</p>
   <div class="programs">
@@ -509,15 +597,15 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 07 — H-LAM/T -->
 <section id="s7">
-  <div class="section-label reveal">07 — The Framework</div>
+  <div class="section-label reveal"><span class="section-num">07</span> — The Framework</div>
   <h2 class="reveal reveal-delay-1">H-LAM/T</h2>
   <p class="dim reveal reveal-delay-1" style="font-family:var(--mono);font-size:13px;margin-bottom:16px">Engelbart's Augmentation Framework</p>
   <div class="hlamt reveal reveal-delay-2">
-    <div class="hlamt-letter"><span class="hlamt-char">H</span><span class="hlamt-word">Human</span></div>
-    <div class="hlamt-letter"><span class="hlamt-char">L</span><span class="hlamt-word">Language</span></div>
-    <div class="hlamt-letter"><span class="hlamt-char">A</span><span class="hlamt-word">Artifacts</span></div>
-    <div class="hlamt-letter"><span class="hlamt-char">M</span><span class="hlamt-word">Methodology</span></div>
-    <div class="hlamt-letter"><span class="hlamt-char">T</span><span class="hlamt-word">Training</span></div>
+    <div class="hlamt-letter"><span class="hlamt-char c-h">H</span><span class="hlamt-word">Human</span></div>
+    <div class="hlamt-letter"><span class="hlamt-char c-l">L</span><span class="hlamt-word">Language</span></div>
+    <div class="hlamt-letter"><span class="hlamt-char c-a">A</span><span class="hlamt-word">Artifacts</span></div>
+    <div class="hlamt-letter"><span class="hlamt-char c-m">M</span><span class="hlamt-word">Methodology</span></div>
+    <div class="hlamt-letter"><span class="hlamt-char c-t">T</span><span class="hlamt-word">Training</span></div>
   </div>
   <div class="divider reveal reveal-delay-3"></div>
   <p class="reveal reveal-delay-3">AI tools are <em>artifacts</em> — powerful ones — but artifacts alone don't create capability.</p>
@@ -526,7 +614,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 08 — Ethereum Localism -->
 <section id="s8">
-  <div class="section-label reveal">08 — Ethereum Localism</div>
+  <div class="section-label reveal"><span class="section-num">08</span> — Ethereum Localism</div>
   <h2 class="reveal reveal-delay-1">Strengthening<br>local commons</h2>
   <p class="large reveal reveal-delay-2">This is also an Ethereum community hub — focused on <span class="accent2">Ethereum Localism</span>, strengthening local and global commons infrastructure.</p>
   <div class="eth-values reveal reveal-delay-3">
@@ -540,7 +628,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 09 — Progress & Traction -->
 <section id="s9">
-  <div class="section-label reveal">09 — Progress & Traction</div>
+  <div class="section-label reveal"><span class="section-num">09</span> — Progress & Traction</div>
   <h2 class="reveal reveal-delay-1">Built, not<br>imagined</h2>
   <ul class="traction-list">
     <li class="reveal reveal-delay-1"><i data-lucide="check" style="width:18px;height:18px"></i><span><strong>2 years</strong> operating RegenHub on the second floor</span></li>
@@ -553,7 +641,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 10 — The Ask -->
 <section id="s10">
-  <div class="section-label reveal">10 — The Ask</div>
+  <div class="section-label reveal"><span class="section-num">10</span> — The Ask</div>
   <h2 class="reveal reveal-delay-1">Fund the<br>third floor</h2>
   <div class="ask-amount reveal reveal-delay-2">$50,000</div>
   <p class="dim reveal reveal-delay-2" style="font-family:var(--mono);font-size:12px">Fundraising goal — subject to confirmation</p>
@@ -579,7 +667,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 11 — The Team -->
 <section id="s11">
-  <div class="section-label reveal">11 — The Team</div>
+  <div class="section-label reveal"><span class="section-num">11</span> — The Team</div>
   <h2 class="reveal reveal-delay-1">Todd Youngblood</h2>
   <p class="dim reveal reveal-delay-1" style="font-family:var(--mono);font-size:13px;margin-bottom:24px">Design engineer · Cooperative organizer</p>
   <p class="large reveal reveal-delay-2">Two years building RegenHub into Boulder's hub for regenerative technology.</p>
@@ -588,7 +676,7 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 
 <!-- 12 — Join Us -->
 <section id="s12">
-  <div class="section-label reveal">12 — Join Us</div>
+  <div class="section-label reveal"><span class="section-num">12</span> — Join Us</div>
   <h2 class="reveal reveal-delay-1">Be part of<br>what we're building</h2>
   <div class="link-grid">
     <a class="link-card reveal reveal-delay-1" href="https://artizen.fund" target="_blank" rel="noopener">
