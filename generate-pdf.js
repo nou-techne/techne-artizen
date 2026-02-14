@@ -42,7 +42,7 @@ const path = require('path');
         justify-content: center !important;
       }
       section:last-of-type { page-break-after: auto !important; }
-      .nav-dots, .theme-toggle, .scroll-cue { display: none !important; }
+      .nav-dots, .theme-toggle, .scroll-cue, #themeToggle { display: none !important; }
       .pull-quote, p { max-width: 900px; }
     `;
     document.head.appendChild(style);
