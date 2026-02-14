@@ -164,51 +164,101 @@ p.large { font-size: 1.25rem; line-height: 1.5; }
 .building {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  max-width: 560px;
+  gap: 0;
+  max-width: 640px;
   margin: 40px 0;
+  position: relative;
+}
+.building::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--neon-purple), var(--neon-pink), var(--neon-green));
+  border-radius: 1px;
 }
 .floor {
-  border: 1px solid #e0e0e0;
-  padding: 28px 32px;
+  border: 1px solid var(--bg-card);
+  padding: 32px 32px 32px 72px;
   position: relative;
-  background: #fff;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  background: var(--bg);
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 .floor:hover {
-  border-color: var(--neon-blue);
-  box-shadow: 0 0 12px rgba(0,212,255,0.15);
+  background: var(--bg-card);
 }
+.floor-icon {
+  position: absolute;
+  left: 14px;
+  top: 32px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 2px solid var(--text-dim);
+  z-index: 1;
+}
+.floor-icon i { width: 16px; height: 16px; }
 .floor-label {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-dim);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .floor-name {
   font-family: var(--serif);
   font-size: 1.5rem;
   color: var(--text);
+  margin-bottom: 8px;
 }
 .floor-desc {
   font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  max-width: 500px;
+}
+.floor-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.floor-feat {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--bg-card);
   color: var(--text-dim);
-  margin-top: 4px;
+  transition: border-color 0.2s, color 0.2s;
 }
 .floor.highlight {
   border-color: var(--neon-pink);
-  background: rgba(255,45,135,0.04);
+  background: rgba(232,69,122,0.04);
   border-width: 2px;
 }
-.floor.highlight .floor-name {
-  color: var(--neon-pink);
-}
+.floor.highlight .floor-name { color: var(--neon-pink); }
+.floor.highlight .floor-icon { border-color: var(--neon-pink); color: var(--neon-pink); }
+.floor.highlight .floor-feat:hover { border-color: var(--neon-pink); color: var(--neon-pink); }
 .floor.roof { border-color: var(--neon-purple); }
-.floor.roof:hover { box-shadow: 0 0 12px rgba(191,90,242,0.15); }
+.floor.roof .floor-icon { border-color: var(--neon-purple); color: var(--neon-purple); }
+.floor.roof .floor-feat:hover { border-color: var(--neon-purple); color: var(--neon-purple); }
 .floor.second { border-color: var(--neon-green); }
-.floor.second:hover { box-shadow: 0 0 12px rgba(57,255,20,0.15); }
+.floor.second .floor-icon { border-color: var(--neon-green); color: var(--neon-green); }
+.floor.second .floor-feat:hover { border-color: var(--neon-green); color: var(--neon-green); }
+@media (max-width: 768px) {
+  .floor { padding: 24px 24px 24px 64px; }
+  .building::before { left: 24px; }
+  .floor-icon { left: 8px; }
+}
 
 /* Comparison grid */
 .comparison {
@@ -585,24 +635,48 @@ html.dark .toggle-thumb { transform: translateX(16px); }
 <section id="s4">
   <div class="section-label reveal"><span class="section-num">04</span> — What We're Building</div>
   <h2 class="reveal reveal-delay-1">A vertical ecosystem</h2>
+  <p class="dim reveal reveal-delay-1" style="font-family:var(--mono);font-size:13px;margin-bottom:8px">1515 Walnut Street, Boulder, Colorado · 5,430 ft</p>
   <div class="building">
     <div class="floor roof reveal reveal-delay-1">
+      <div class="floor-icon"><i data-lucide="sun"></i></div>
       <div class="floor-label">Roof</div>
       <div class="floor-name">Gathering Space</div>
-      <div class="floor-desc">Community events, open sky</div>
+      <div class="floor-desc">Where the community becomes visible to itself under open sky. Events, happy hours, moments where relationships form in a different register.</div>
+      <div class="floor-features">
+        <span class="floor-feat">community events</span>
+        <span class="floor-feat">happy hours</span>
+        <span class="floor-feat">open sky</span>
+      </div>
     </div>
     <div class="floor highlight reveal reveal-delay-2">
-      <div class="floor-label">Third Floor — New</div>
+      <div class="floor-icon"><i data-lucide="sparkles"></i></div>
+      <div class="floor-label">Third Floor — Raising Funds</div>
       <div class="floor-name">Techne Institute</div>
-      <div class="floor-desc">Learning cohorts, studio, contemplative practice</div>
+      <div class="floor-desc">The learning community home. Commons for members, teaching space for cohorts, studio for making, quiet room for focus. Contemplative practice grounds the work.</div>
+      <div class="floor-features">
+        <span class="floor-feat">AI building cohorts</span>
+        <span class="floor-feat">studio space</span>
+        <span class="floor-feat">morning practice</span>
+        <span class="floor-feat">sauna + cold plunge</span>
+        <span class="floor-feat">arts integration</span>
+        <span class="floor-feat">quiet room</span>
+      </div>
     </div>
     <div class="floor second reveal reveal-delay-3">
+      <div class="floor-icon"><i data-lucide="users"></i></div>
       <div class="floor-label">Second Floor — Active</div>
       <div class="floor-name">RegenHub</div>
-      <div class="floor-desc">Co-working cooperative, ventures, builders</div>
+      <div class="floor-desc">Co-working cooperative and venture studio. Startups, founders, builders actively creating. Employment pathways, real-world context, the ecosystem that absorbs graduates.</div>
+      <div class="floor-features">
+        <span class="floor-feat">co-working</span>
+        <span class="floor-feat">hot desks</span>
+        <span class="floor-feat">venture studio</span>
+        <span class="floor-feat">events</span>
+        <span class="floor-feat">Ethereum hub</span>
+      </div>
     </div>
   </div>
-  <p class="pull-quote reveal reveal-delay-4">The building is the product — a complete ecosystem from street to sky.</p>
+  <div class="pull-quote reveal reveal-delay-4" style="max-width:560px">The building is the product — a complete ecosystem from street to sky.</div>
 </section>
 
 <!-- 05 — The Distinction -->
